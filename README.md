@@ -13,6 +13,8 @@
 
 <br/>
 
+编译：
+
 ```bash
 nimble build --verbosity:0 -d=mingw --app=console --cpu=amd64 -d:danger -d:strip --opt:size --passc=-flto --passl=-flto
 ```
